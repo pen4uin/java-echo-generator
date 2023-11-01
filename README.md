@@ -5,7 +5,6 @@
 # Java Echo Generator
 
 
-
 ## 0x01 Introduce
 
 **jEG (Java Echo Generator )** 是一款支持高度自定义的 Java 回显载荷生成工具。
@@ -75,36 +74,18 @@ System.out.println("请求头: " + config.getReqHeaderName());
 System.out.println(generator.getPayload());
 ```
 
-
-
-
-
-## 0x03 Contributor
-
-```
-奇安信观星实验室(SGLAB of Legendsec at Qi'anxin Group)
-```
-
-
-
-<img src="./img/sglab.svg" width=300 alt="SgLab">
-
-
-
-
-
-## 0x04 Reference
+## 0x03 Reference
 
 使用手册
 
 - [jEG - 高度自定义的 Java 回显生成工具](https://mp.weixin.qq.com/s/_TmPJnKtstL3KeysoyLcVA)
 
-参考
 
+```
 - https://gv7.me/articles/2020/semi-automatic-mining-request-implements-multiple-middleware-echo/
 - https://gist.github.com/fnmsd/8165cedd9fe735d7ef438b2e977af327
 - https://github.com/feihong-cs/Java-Rce-Echo
-- chatgpt
+```
 
 
 

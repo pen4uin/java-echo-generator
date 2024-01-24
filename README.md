@@ -1,11 +1,6 @@
-
-
-
-
 # Java Echo Generator
 
-
-## 0x01 Introduce
+## 0x01 简介
 
 **jEG (Java Echo Generator )** 是一款支持高度自定义的 Java 回显载荷生成工具。
 
@@ -16,25 +11,29 @@
 * 支持的输出格式 (BASE64/BCEL/BIGINTEGER/CLASS/JAR/JS)
 
 
-
-
+> [!WARNING]
 > 此工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！
 
 
+## 0x02 编译
 
-## 0x02 Usage
+```shell
+mvn package assembly:single
+```
+
+## 0x03 使用
 
 **图形化**
 
 1. 下载 jEG-GUI-1.0.0.jar 运行即可
 
-![image-20230928161217950](./img/image-20230928161217950.png)
+![image-20230928161217950](./img/gui.png)
 
 **Woodpecker 插件**
 
 1. 下载 jEG-Woodpecker-1.0.0.jar 到 woodpecker 插件目录下即可
 
-![image-20230928153330494](./img/image-20230928153330494.png)
+![image-20230928153330494](./img/woodpecker-plugin.png)
 
 **第三方库**
 
@@ -74,22 +73,18 @@ System.out.println("请求头: " + config.getReqHeaderName());
 System.out.println(generator.getPayload());
 ```
 
-## 0x03 Reference
+
+---
+
 
 使用手册
 
 - [jEG - 高度自定义的 Java 回显生成工具](https://mp.weixin.qq.com/s/_TmPJnKtstL3KeysoyLcVA)
 
 
+参考项目
 ```
-- https://gv7.me/articles/2020/semi-automatic-mining-request-implements-multiple-middleware-echo/
-- https://gist.github.com/fnmsd/8165cedd9fe735d7ef438b2e977af327
-- https://github.com/feihong-cs/Java-Rce-Echo
+https://gv7.me/articles/2020/semi-automatic-mining-request-implements-multiple-middleware-echo/
+https://gist.github.com/fnmsd/8165cedd9fe735d7ef438b2e977af327
+https://github.com/feihong-cs/Java-Rce-Echo
 ```
-
-
-
-
-
-
-

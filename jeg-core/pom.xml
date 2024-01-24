@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>jeg</groupId>
+        <artifactId>java-echo-generator</artifactId>
+        <version>${reversion}</version>
+    </parent>
+    <artifactId>jEG-core</artifactId>
+
+    <build>
+        <finalName>${artifactId}-${reversion}</finalName>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>jeg</groupId>
+            <artifactId>jEG-common</artifactId>
+            <version>${reversion}</version>
+        </dependency>
+    </dependencies>
+</project>

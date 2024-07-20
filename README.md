@@ -1,51 +1,65 @@
-# Java Echo Generator
+<h4 align="right"><strong><a href="jeg-docs/README_EN.md">English</a></strong> | 中文 </h4>
+<p align="center">
+  <h1 align="center">Java Echo Generator</h1>
+  <div align="center">
+    <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/pen4uin/java-echo-generator?style=flat-square">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/pen4uin/java-echo-generator?style=flat-square">
+    <img alt="GitLab Stars" src="https://img.shields.io/github/stars/pen4uin/java-echo-generator.svg?style=flat-square">
+  </div>
+  <div align="center">一款支持高度自定义的 Java 回显载荷生成工具</div>
+</p>
 
-## 0x01 简介
-
-**jEG (Java Echo Generator )** 是一款支持高度自定义的 Java 回显载荷生成工具。
-
-主要功能如下：
-
-* 支持的中间件和框架（Tomcat/Resin/Jetty/WebLogic/WebSphere/Undertow/SpringMVC/Struts2）
-* 支持的执行模式（Command/Code）
-* 支持的输出格式 (BASE64/BCEL/BIGINTEGER/CLASS/JAR/JS)
-
+<br>
 
 > [!WARNING]
-> 此工具仅限于安全研究和教学，用户承担因使用此工具而导致的所有法律和相关责任！ 作者不承担任何法律和相关责任！
+> 本工具仅供安全研究和学习使用。使用者需自行承担因使用此工具产生的所有法律及相关责任。请确保你的行为符合当地的法律和规定。作者不承担任何责任。如不接受，请勿使用此工具。
+
+<br>
+
+## 功能
+
+| 中间件       | 框架        | 执行模式    | 输出格式       | 
+|-----------|-----------|---------|------------|
+| Tomcat    | SpringMVC | Command | BASE64     | 
+| Resin     | Struts2   | Code    | BCEL       | 
+| WebLogic  |           |         | BIGINTEGER | 
+| Jetty     |           |         | CLASS      | 
+| WebSphere |           |         | JAR        | 
+| Undertow  |           |         | JS         |
+| GlassFish |           |         |            | 
 
 
-## 0x02 编译
+## 编译
 
 ```shell
 mvn package assembly:single
 ```
 
-## 0x03 使用
+## 使用
 
 **图形化**
 
 1. 下载 jEG-GUI-1.0.0.jar 运行即可
 
-![image-20230928161217950](./img/gui.png)
+![image-20230928161217950](./jeg-docs/img/gui.png)
 
 **Woodpecker 插件**
 
 1. 下载 jEG-Woodpecker-1.0.0.jar 到 woodpecker 插件目录下即可
 
-![image-20230928153330494](./img/woodpecker-plugin.png)
+![image-20230928153330494](./jeg-docs/img/woodpecker-plugin.png)
 
 **第三方库**
 
 1. 下载 jEG-Core-1.0.0.jar 并安装到本地 maven 仓库
 
-```shell
+```
 mvn install:install-file -Dfile=jEG-Core-1.0.0.jar -DgroupId=jeg -DartifactId=jeg-core -Dversion=1.0.0 -Dpackaging=jar
 ```
 
 2. 引入自己的框架/工具的依赖中
 
-```xml
+```
 <dependency>
     <groupId>jeg</groupId>
     <artifactId>jeg-core</artifactId>
@@ -55,7 +69,7 @@ mvn install:install-file -Dfile=jEG-Core-1.0.0.jar -DgroupId=jeg -DartifactId=je
 
 3. 调用 API 生成需要的回显载荷即可
 
-```java
+```
 // 基本配置
 jEGConfig config = new jEGConfig() {{
     // 设置待回显的中间件为 tomcat
@@ -73,18 +87,16 @@ System.out.println("请求头: " + config.getReqHeaderName());
 System.out.println(generator.getPayload());
 ```
 
+## 文档
 
----
+- [jEG v1.0.0 - 高度自定义的 Java 回显生成工具](./jeg-docs/1.0.0/)
 
+## 致谢
 
-使用手册
+- https://gv7.me/articles/2020/semi-automatic-mining-request-implements-multiple-middleware-echo/
+- https://gist.github.com/fnmsd/8165cedd9fe735d7ef438b2e977af327
+- https://github.com/feihong-cs/Java-Rce-Echo
 
-- [jEG - 高度自定义的 Java 回显生成工具](https://mp.weixin.qq.com/s/_TmPJnKtstL3KeysoyLcVA)
+## 协议
 
-
-参考项目
-```
-https://gv7.me/articles/2020/semi-automatic-mining-request-implements-multiple-middleware-echo/
-https://gist.github.com/fnmsd/8165cedd9fe735d7ef438b2e977af327
-https://github.com/feihong-cs/Java-Rce-Echo
-```
+- MIT

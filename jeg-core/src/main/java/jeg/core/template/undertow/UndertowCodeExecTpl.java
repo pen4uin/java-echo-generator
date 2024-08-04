@@ -7,6 +7,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class UndertowCodeExecTpl {
+    static {
+        new UndertowCodeExecTpl();
+    }
+
 
     private static String getReqParamName() {
         return "code";

@@ -9,7 +9,13 @@ import java.util.Scanner;
 
 public class TomcatCmdExecTpl {
 
-    public TomcatCmdExecTpl() {
+    static {
+        try {
+            new TomcatCmdExecTpl();
+        } catch (Exception e) {
+        }
+    }
+    public TomcatCmdExecTpl() throws Exception{
         run();
     }
 

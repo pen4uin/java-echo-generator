@@ -1,9 +1,16 @@
 package jeg.core.template.websphere;
 
+import jeg.core.template.weblogic.WebLogicCodeExecTpl;
+
 import java.io.InputStream;
 import java.util.Scanner;
 
 public class WebSphereCmdExecTpl {
+
+    static {
+        new WebSphereCmdExecTpl();
+    }
+
 
     private  String getReqHeaderName() {
         return "cmd";

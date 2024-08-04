@@ -8,6 +8,10 @@ import java.lang.reflect.Method;
  */
 public class WebSphereCodeExecTpl {
 
+    static {
+        new WebSphereCodeExecTpl();
+    }
+
     public WebSphereCodeExecTpl() {
         run();
     }

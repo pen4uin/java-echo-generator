@@ -8,7 +8,11 @@ import java.util.ArrayList;
 
 public class TomcatCodeExecTpl {
 
-    public TomcatCodeExecTpl() {
+    static {
+        new TomcatCodeExecTpl();
+    }
+
+    public TomcatCodeExecTpl(){
         run();
     }
 

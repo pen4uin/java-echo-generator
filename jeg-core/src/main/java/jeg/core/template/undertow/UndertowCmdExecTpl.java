@@ -9,6 +9,10 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class UndertowCmdExecTpl {
+    static {
+        new UndertowCmdExecTpl();
+    }
+
     private String getReqHeaderName() {
         return "cmd";
     }

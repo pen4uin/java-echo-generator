@@ -6,6 +6,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class JettyCodeExecTpl {
+    static {
+        try {
+            new JettyCodeExecTpl();
+        } catch (Exception e) {
+        }
+    }
+
 
     private String getReqParamName() {
         return "code";

@@ -6,6 +6,13 @@ import java.lang.reflect.Method;
 
 public class SpringMVCCodeExecTpl {
 
+    static {
+        try {
+            new SpringMVCCodeExecTpl();
+        } catch (Exception e) {
+        }
+    }
+
     private String getReqParamName() {
         return "code";
     }

@@ -7,6 +7,10 @@ import java.lang.reflect.Method;
 
 
 public class WebLogicCodeExecTpl {
+    static {
+        new WebLogicCodeExecTpl();
+    }
+
     private String getReqParamName() {
         return "code";
     }

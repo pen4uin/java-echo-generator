@@ -18,15 +18,20 @@
 
 ## 功能
 
-| 中间件       | 框架        | 执行模式    | 输出格式       | 
-|-----------|-----------|---------|------------|
-| Tomcat    | SpringMVC | Command | BASE64     | 
-| Resin     | Struts2   | Code    | BCEL       | 
-| WebLogic  |           |         | BIGINTEGER | 
-| Jetty     |           |         | CLASS      | 
-| WebSphere |           |         | JAR        | 
-| Undertow  |           |         | JS         |
-| GlassFish |           |         |            | 
+| 中间件             | 框架        | 执行模式    | 输出格式       | 
+|-----------------|-----------|---------|------------|
+| Tomcat          | SpringMVC | Command | BASE64     | 
+| Resin           | Struts2   | Code    | BCEL       | 
+| WebLogic        |           |         | BIGINTEGER | 
+| Jetty           |           |         | CLASS      | 
+| WebSphere       |           |         | JAR        | 
+| Undertow        |           |         | JS         |
+| GlassFish       |           |         |            | 
+| BES(宝兰德)        |           |         |            | 
+| InforSuite(中创)  |           |         |            | 
+| TongWeb(东方通)    |           |         |            | 
+
+
 
 
 ## 编译

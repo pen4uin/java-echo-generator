@@ -22,6 +22,8 @@ public interface Constants {
     String SERVER_UNDERTOW = "Undertow";
     String SERVER_WEBLOGIC = "WebLogic";
     String SERVER_WEBSPHERE = "WebSphere";
-
+    String SERVER_BES = "BES";
+    String SERVER_INFORSUITE = "InforSuite";
+    String SERVER_TONGWEB = "TongWeb";
     String SERVER_UNKNOWN = "Unknown";
 }

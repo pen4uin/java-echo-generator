@@ -31,6 +31,9 @@ public class jEGHelper implements IHelperPlugin {
             add(new jEchoHelper(jEGConstants.SERVER_WEBLOGIC));
             add(new jEchoHelper(jEGConstants.SERVER_UNDERTOW));
             add(new jEchoHelper(jEGConstants.SERVER_STRUTS2));
+            add(new jEchoHelper(jEGConstants.SERVER_BES));
+            add(new jEchoHelper(jEGConstants.SERVER_INFORSUITE));
+            add(new jEchoHelper(jEGConstants.SERVER_TONGWEB));
             add(new jEchoHelper(jEGConstants.SERVER_UNKNOWN));
         }});
     }

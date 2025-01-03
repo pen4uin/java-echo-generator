@@ -3,6 +3,10 @@ package jeg.core.util;
 import jeg.core.config.jEGConstants;
 import jeg.core.template.all.DFSCmdExecTpl;
 import jeg.core.template.all.DFSCodeExecTpl;
+import jeg.core.template.bes.BESCmdExecTpl;
+import jeg.core.template.bes.BESCodeExecTpl;
+import jeg.core.template.inforsuite.InforSuiteCmdExecTpl;
+import jeg.core.template.inforsuite.InforSuiteCodeExecTpl;
 import jeg.core.template.jetty.JettyCmdExecTpl;
 import jeg.core.template.jetty.JettyCodeExecTpl;
 import jeg.core.template.resin.ResinCmdExecTpl;
@@ -13,6 +17,8 @@ import jeg.core.template.struts2.Struts2CmdExecTpl;
 import jeg.core.template.struts2.Struts2CodeExecTpl;
 import jeg.core.template.tomcat.TomcatCmdExecTpl;
 import jeg.core.template.tomcat.TomcatCodeExecTpl;
+import jeg.core.template.tongweb.TongWebCmdExecTpl;
+import jeg.core.template.tongweb.TongWebCodeExecTpl;
 import jeg.core.template.undertow.UndertowCmdExecTpl;
 import jeg.core.template.undertow.UndertowCodeExecTpl;
 import jeg.core.template.weblogic.WebLogicCmdExecTpl;
@@ -88,5 +94,23 @@ public class TemplateUtil {
         unknownMap.put(jEGConstants.MODEL_CMD, DFSCmdExecTpl.class.getName());
         unknownMap.put(jEGConstants.MODEL_CODE, DFSCodeExecTpl.class.getName());
         classMap.put(jEGConstants.SERVER_UNKNOWN, unknownMap);
+
+        // 10、BES
+        Map<String, String> besMap = new HashMap();
+        besMap.put(jEGConstants.MODEL_CMD, BESCmdExecTpl.class.getName());
+        besMap.put(jEGConstants.MODEL_CODE, BESCodeExecTpl.class.getName());
+        classMap.put(jEGConstants.SERVER_BES, besMap);
+
+        // 11、InforSuite
+        Map<String, String> inforsuiteMap = new HashMap();
+        inforsuiteMap.put(jEGConstants.MODEL_CMD, InforSuiteCmdExecTpl.class.getName());
+        inforsuiteMap.put(jEGConstants.MODEL_CODE, InforSuiteCodeExecTpl.class.getName());
+        classMap.put(jEGConstants.SERVER_INFORSUITE, inforsuiteMap);
+
+        // 12、BES
+        Map<String, String> tongwebMap = new HashMap();
+        tongwebMap.put(jEGConstants.MODEL_CMD, TongWebCmdExecTpl.class.getName());
+        tongwebMap.put(jEGConstants.MODEL_CODE, TongWebCodeExecTpl.class.getName());
+        classMap.put(jEGConstants.SERVER_TONGWEB, tongwebMap);
     }
 }

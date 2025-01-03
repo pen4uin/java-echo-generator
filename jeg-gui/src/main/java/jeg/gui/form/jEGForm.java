@@ -88,6 +88,9 @@ public class jEGForm {
                 jEGConstants.SERVER_JETTY,
                 jEGConstants.SERVER_UNDERTOW,
                 jEGConstants.SERVER_STRUTS2,
+                jEGConstants.SERVER_BES,
+                jEGConstants.SERVER_INFORSUITE,
+                jEGConstants.SERVER_TONGWEB,
                 jEGConstants.SERVER_UNKNOWN
         };
         String[] modelBoxItems = new String[]{
